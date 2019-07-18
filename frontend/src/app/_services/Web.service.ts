@@ -8,6 +8,6 @@ export class WebService {
 
 constructor(private http: HttpClient) { }
 test() {
-  return this.http.get('http://localhost:3000/api');
+  return this.http.get('/api');
 }
 }

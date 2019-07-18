@@ -3,10 +3,11 @@ const bodyParser = require('body-parser');
 const http = require('http');
 const path = require('path')
 const app = express();
-const port = process.env.PORT;
+const cors = require('cors');
+const port = process.env.PORT || 8080;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '..', 'frontend/dist/frontend')));
-
+app.use(cors());
 server = http.createServer(app);
 
 app.get('/', (req, res) => {
@@ -15,6 +16,6 @@ app.get('/', (req, res) => {
 app.get('/api', (req, res) => {
     res.send({message: 'message working'});
 });
-server.listen(port || '3000', () => {
+server.listen(port, () => {
     console.log(`server is listening on port: ${port || '3000'}`);
 });
